@@ -1,8 +1,34 @@
 import requests
 import sys
 import pandas as pd
+import os
+from dotenv import load_dotenv
 
-#classes
+
+def calculate_total(items):
+    total = 0
+    for item in items:
+        total += item["price"] * item["quantity"]
+    return total
+
+
+shopping_cart = [
+    {"name": "apple", "price": 0.5, "quantity": 6},
+    {"name": "banana", "price": 0.3, "quantity": 8},
+]
+print(calculate_total(shopping_cart))
+
+load_dotenv()
+
+# Now use your variables from the .env file with library dotenv
+api_key = os.environ.get("API_KEY")
+debug = os.environ.get("DEBUG")
+
+print(f"API Key: {api_key}")
+print(f"Debug mode: {debug}")
+
+
+# classes
 class Dog:
     def __init__(self, name, breed):
         self.name = name
@@ -10,7 +36,8 @@ class Dog:
 
     def bark(self):
         return f"{self.name} says Woof!"
-    
+
+
 class Cat:
     def __init__(self, name, color):
         self.name = name
@@ -18,6 +45,7 @@ class Cat:
 
     def meow(self):
         return f"{self.name} says Meow!"
+
 
 jerry = Dog(name="Jerry", breed="Labrador")
 jerry.bark()
@@ -28,7 +56,7 @@ cat = Cat(name="Whiskers", color="Tabby")
 print(dog.name)
 print(cat.meow())
 
-#try and except
+# try and except
 try:
     result = 10 / 0
 except:
@@ -36,9 +64,12 @@ except:
 
 
 def get_weather(latitude, longitude):
-    response = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,wind_speed_10m")
+    response = requests.get(
+        f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,wind_speed_10m"
+    )
     data = response.json()
-    return data['current']['temperature_2m']
+    return data["current"]["temperature_2m"]
+
 
 # Get temperature for different cities
 paris_temp = get_weather(48.85, 2.35)
@@ -54,7 +85,7 @@ print(f"Tokyo: {tokyo_temp}°C")
 response = requests.get("https://api.github.com")
 print(response.status_code)  # Should print 200
 
-#working with strings
+# working with strings
 first_name = "Jane"
 last_name = "Doe"
 
@@ -73,9 +104,11 @@ stars = star * 10  # "**********"
 
 separator = "-" * 20  # "--------------------"
 
+
 def introduce(name, age):
     print(f"My name is {name}")
     print(f"I am {age} years old")
+
 
 # Call with values
 introduce("Alice", 25)
