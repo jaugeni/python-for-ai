@@ -1,0 +1,41 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# VS Code
+.vscode/
+
+# Jupyter / Interactive
+.ipynb_checkpoints/
+
+# MacOS
+.DS_Store
+
+# Environment variables
+.env
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# Testing
+.coverage
+.pytest_cache/
+
+# Python tooling
+.mypy_cache/
+.ruff_cache/
+
+# Data files (optional)
+# data/*.csv
